@@ -46,6 +46,8 @@ int _printf(const char *format, ...)
 	int i, nbr;
 	va_list args;
 
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+		return (-1);
 	va_start(args, format);
 	nbr = 0;
 	i = 0;
