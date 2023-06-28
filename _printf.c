@@ -33,15 +33,17 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i + 1] == '%')
 			{
-				write(1, "%", 1);
+				nbr += write(1, "%", 1);
 				i++;
-				nbr += 1;
+			}
+			else
+			{
+				nbr += write(1, &format[i], 1);
 			}
 		}
 		else
 		{
-			write(1, &format[i], 1);
-			nbr += 1;
+			nbr += write(1, &format[i], 1);
 		}
 		i++;
 	}
