@@ -1,40 +1,6 @@
 #include <unistd.h>
 #include <stdarg.h>
-/**
- * _strlen - ret the length of str
- * @s: Description of parameter x
-(* a blank line
- * Description: Longer description of the function)?
-(* section header: Section description)*
- * Return: int i
- */
-int _strlen(char *s)
-{
-	int i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
-/**
- * _puts - ret the length of str
- * @str: Description of parameter x
-(* a blank line
- * Description: Longer description of the function)?
-(* section header: Section description)*
- * Return: void
- */
-void _puts(char *str)
-{
-	while (*str != '\0')
-	{
-		write(1, str, 1);
-		str++;
-	}
-}
+#include "main.h"
 /**
  * _printf - produces output according to a format.
  * @format: character string. The format string is composed
@@ -57,18 +23,12 @@ int _printf(const char *format, ...)
 		{
 			if (format[i + 1] == 'c')
 			{
-				char c = va_arg(args, int);
-
-				write(1, &c, 1);
-				nbr += 1;
+				nbr += f_char(va_arg(args, int));
 				i++;
 			}
 			else if (format[i + 1] == 's')
 			{
-				char *s = va_arg(args, char *);
-
-				_puts(s);
-				nbr += _strlen(s);
+				nbr += _puts(va_arg(args, char *));
 				i++;
 			}
 			else if (format[i + 1] == '%')
